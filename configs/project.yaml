@@ -1,0 +1,62 @@
+project:
+  name: agri-detect
+  seed: 42
+
+dataset:
+  root: Data/weed detection -bounding boxes-.v7i.coco
+  train_annotations: train/_annotations.coco.json
+  valid_annotations: valid/_annotations.coco.json
+  test_annotations: test/_annotations.coco.json
+  image_dirs:
+    train: train
+    valid: valid
+    test: test
+  schema_classes:
+    - crop-weed
+    - weed
+    - wheat
+  active_classes:
+    - weed
+    - wheat
+  excluded_classes:
+    - crop-weed
+
+outputs:
+  reports_dir: reports
+  dataset_summary: reports/dataset_summary.json
+  models_dir: models
+  runs_dir: reports/runs
+  predictions_dir: reports/predictions
+  experiment_log: reports/experiment_log.jsonl
+
+training:
+  model: yolo11n.pt
+  device: auto
+  image_size: 960
+  batch_size: 8
+  epochs: 50
+  patience: 10
+  workers: 2
+  pretrained: true
+  augment:
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    fliplr: 0.5
+    mosaic: 1.0
+
+evaluation:
+  device: cpu
+  sample_count: 5
+
+prediction:
+  device: auto
+  conf: 0.25
+
+future_classes:
+  backlog:
+    - dirt
+  notes:
+    - Add `dirt` into `schema_classes` when labeled data is available.
+    - Decide whether `dirt` is a separate class or background-adjacent hard negative.
+    - Regenerate dataset inspection, training, evaluation, and prediction outputs after enabling it.

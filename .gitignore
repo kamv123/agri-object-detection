@@ -1,0 +1,25 @@
+.DS_Store
+
+# Virtual environments
+.venv/
+
+# Python caches and bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+*.pt
+
+# Local project artifacts
+Data/
+models/
+reports/
