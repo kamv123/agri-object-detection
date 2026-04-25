@@ -6,7 +6,7 @@ Version 1 targets `weed` and `wheat` detection from the COCO-format dataset alre
 ## Project status
 
 Phases 1 through 5 are implemented: dataset inspection, training prep, evaluation, and prediction CLIs are all available.
-Phase 6 is focused on polish, logging, and tuning defaults.
+The next phase is focused on polish, logging, and tuning defaults.
 
 ## macOS setup
 
